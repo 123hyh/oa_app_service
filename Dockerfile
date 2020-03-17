@@ -1,12 +1,13 @@
 FROM node:latest
-ENV PROJECT_ENV production
-ENV NODE_ENV production
 
-WORKDIR /code
+RUN mkdir -p /home/www/express
+WORKDIR /home/www/express
 
-ADD . /code
-RUN npm install --production
+COPY . /home/www/express
+
+RUN npm install
 
 EXPOSE 3000
+
 ENTRYPOINT ["npm", "run"]
 CMD ["start"]
